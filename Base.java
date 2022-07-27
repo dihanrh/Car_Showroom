@@ -1,6 +1,6 @@
 import java.util.Scanner;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.LocalDateTime; 
+import java.time.format.DateTimeFormatter;
 
 class Model {
 
@@ -53,10 +53,11 @@ class Customer {
 
     public void Info() {
         System.out.println("\n<<<<<<<<...Customer Recipt...>>>>>>>>");
-        String DateStamp = new SimpleDateFormat("dd/mm/yyyy").format(Calendar.getInstance().getTime());
-        String TimeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
-        System.out.println("Date             :" + DateStamp);
-        System.out.println("Time             :" + TimeStamp);
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedDate = myDateObj.format(myFormatObj);
+        
+        System.out.println("Date & Time      :" + formattedDate);
         System.out.println("Customer ID      : " + cusID);
         System.out.println("Customer Name    : " + cusName);
         System.out.println("Customer Address : " + cusAddrs);
@@ -208,13 +209,14 @@ public class Base {
             String input = scan.nextLine();
 
             switch (input) {
-                
+
                 case "1": {
 
                     System.out.println("--->-Main Menu-<---");
-                    System.out.println("\nPress >> 1 << for Toyota \nPress >> 2 << for Honda\nPress >> 3 << for Lexus\n");
+                    System.out
+                            .println("\nPress >> 1 << for Toyota \nPress >> 2 << for Honda\nPress >> 3 << for Lexus\n");
 
-                    String  inp = scan.nextLine();
+                    String inp = scan.nextLine();
 
                     switch (inp) {
                         case "1": {
@@ -247,10 +249,9 @@ public class Base {
 
                             break;
                         }
-                        case "*" :{
+                        case "*": {
                             System.out.println("<---Back");
                         }
-                       
 
                         default: {
                             break;
@@ -264,9 +265,8 @@ public class Base {
                     System.exit(0);
                     break;
                 }
-                case "*" :
-                {
-                    break ;
+                case "*": {
+                    break;
                 }
                 default: {
                     System.out.println("Enter 1 or e only");
@@ -275,7 +275,6 @@ public class Base {
 
             }
         }
-       
 
     }
 
